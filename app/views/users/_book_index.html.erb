@@ -2,7 +2,7 @@
   <div class="table_width">
     <table class='table table-bordered'>
       <thead>
-        <tr> 
+        <tr>
           <th>今日の投稿数</th>
           <th>前日の投稿数</th>
           <th>前日比</th>
@@ -27,7 +27,7 @@
   <div class="table_width">
     <table class='table table-bordered'>
       <thead>
-        <tr> 
+        <tr>
           <th>今週の投稿数</th>
           <th>前週の投稿数</th>
           <th>前週比</th>
@@ -52,13 +52,13 @@
   <h4>7日間分の投稿数</h4>
   <table class='table table-bordered'>
     <thead>
-      <tr> 
-        <th>６日前</th>
-        <th>５日前</th>
-        <th>４日前</th>
-        <th>３日前</th>
-        <th>２日前</th>
-        <th>１日前</th>
+      <tr>
+        <th>6日前</th>
+        <th>5日前</th>
+        <th>4日前</th>
+        <th>3日前</th>
+        <th>2日前</th>
+        <th>1日前</th>
         <th>今日</th>
       </tr>
     </thead>
@@ -74,11 +74,11 @@
       </tr>
     </tbody>
   </table>
-  <canvas id="myLineChart"></canvas>
+  <canvas id="postCountChart"></canvas>
   <script>
     $(document).on('turbolinks:load', function() {
-      var ctx = document.getElementById("myLineChart");
-      var myLineChart = new Chart(ctx, {
+      var ctx = document.getElementById("postCountChart");
+      var postCountChart = new Chart(ctx, {
         type: 'line',
         data: {
           labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
@@ -87,16 +87,16 @@
               label: '投稿した本の数',
               data: [
                 <%= @books.created_6day_ago.count %>,
-                <%= @books.created_5day_ago.count %>, 
-                <%= @books.created_4day_ago.count %>, 
-                <%= @books.created_3day_ago.count %>, 
-                <%= @books.created_2day_ago.count %>, 
-                <%= @books.created_yesterday.count %>, 
+                <%= @books.created_5day_ago.count %>,
+                <%= @books.created_4day_ago.count %>,
+                <%= @books.created_3day_ago.count %>,
+                <%= @books.created_2day_ago.count %>,
+                <%= @books.created_yesterday.count %>,
                 <%= @books.created_today.count %>
               ],
-              borderColor: "rgba(0,0,255,1)",
+              borderColor: "rgba(0,255,0,1)",
               backgroundColor: "rgba(0,0,0,0)",
-              tension: 0.4
+              tension: 0.3
             }
           ],
         },
@@ -110,9 +110,6 @@
             y:{
               suggestedMin: 0,
               suggestedMax: 10
-            },
-            x:{
-              stacked: true
             },
           },
         }
